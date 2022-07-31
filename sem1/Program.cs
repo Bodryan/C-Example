@@ -1,8 +1,10 @@
 ﻿//тип_данных имя_переменной = значение
 //тип_данных имя_переменной
 
-int num1 = -3;
-int num2 = 9;
+Console.WriteLine("Введите первое число");
+int num1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите второе число");
+int num2 = Convert.ToInt32(Console.ReadLine());
 
 if (num2 == num1 * num1)
 {
