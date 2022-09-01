@@ -115,7 +115,7 @@ Console.WriteLine(newText);
 Console.WriteLine();
 */
 
-int[] arr = {5, 5, 4, 3, 2, 6, 7, 1, 1};
+int[] arr = {5, 4, 0, 4, 1, 1, 2, 12, 99, 2, 3, 6, 8};
 void PrintArray(int[] array)
 {
     int count = array.Length;
