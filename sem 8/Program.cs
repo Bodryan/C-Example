@@ -1,11 +1,77 @@
 ﻿using System;
 
-namespace sem_8
+namespace sem8
 {
     class Program
     {
         static void Main(string[] args)
         {
+            void Zadacha53()
+            {
+                // Задача 53: Задайте двумерный массив. Напишите программу,
+                // которая поменяет местами первую и последнюю строку
+                // массива.
+                
+                int rows = 5;
+                int colums = 9;
+                int [,]array = new int[rows, colums];
+
+                FillArray(array, -10, 10);
+                PrintArray(array);
+                ReplacingRowsArray(array);
+                Console.WriteLine();
+                PrintArray(array);
+
+
+            }
+
+            // Zadacha53();
+
+            void Zadacha55()
+            {
+                // Задача 55: Задайте двумерный массив. Напишите программу,
+                // которая заменяет строки на столбцы. В случае, если это
+                // невозможно, программа должна вывести сообщение для
+                // пользователя.
+
+                int rows = 4;
+                int colums = 4;
+                int [,]array = new int[rows, colums];
+
+                FillArray(array);
+                PrintArray(array);
+                
+                Console.WriteLine();
+                if(rows == colums)
+                {
+                    ReplacingRowsColumsArray(array);
+                    PrintArray(array);
+                }
+                else Console.WriteLine("Данная оперция невозможна!");            
+            }
+
+            // Zadacha55();
+
+            void Zadacha57()
+            {
+                // Задача 57: Составить частотный словарь элементов
+                // двумерного массива. Частотный словарь содержит
+                // информацию о том, сколько раз встречается элемент
+                // входных данных.
+
+                int rows = 4;
+                int colums = 4;
+                int [,]array = new int[rows, colums];
+
+                FillArray(array, 0, 9);
+                PrintArray(array);
+                Console.WriteLine();
+                CounterArray(array);
+
+            }
+
+            // Zadacha57();
+
             void Zadacha59()
             {
                 // Задача 59: Задайтедвумерный массив из целых чисел.
@@ -66,11 +132,8 @@ namespace sem_8
                         arrayResult[i,j] = array[i + bias_i, j + bias_j];
                     }
                 }
-                PrintArray(arrayResult);
-
-                
+                PrintArray(arrayResult);  
             }
-
             Zadacha59();
         }
 
@@ -94,7 +157,7 @@ namespace sem_8
         {
             int rows = array.GetLength(0);
             int colums = array.GetLength(1);
-
+            
             for (int i = 0; i < rows; i++)
             {
                 for (int j = 0; j < colums; j++)
@@ -103,6 +166,57 @@ namespace sem_8
                 }
                 Console.WriteLine();
             }
+        }
+
+        static void ReplacingRowsArray(int[,] array)
+        {
+            int rows = array.GetLength(0);
+            int colums = array.GetLength(1);            
+            int maxPosition = rows -1;
+
+            for (int j = 0; j < colums; j++)
+            {
+                int temp = array[0,j];
+                array[0,j] = array[maxPosition,j];
+                array[maxPosition,j] = temp;  
+            }
+        }
+
+        static void ReplacingRowsColumsArray(int[,] array)
+        {
+            int rows = array.GetLength(0);
+            int colums = array.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
+            { 
+                for (int j = i; j < colums; j++)
+                {
+                    int temp = array[i,j];
+                    array[i,j] = array[j,i];
+                    array[j,i] = temp;
+                }
+            }                        
+        }
+
+        static void CounterArray(int[,] array)
+        {
+            int rows = array.GetLength(0);
+            int colums = array.GetLength(1);
+            int[] counter = new int[10];
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < colums; j++)
+                {
+                    counter[array[i,j]]++;   
+                }
+                
+            }
+
+            for (int i = 0; i < counter.LongLength; i++)
+            {
+                Console.WriteLine($"Число {i} = {counter[i]}");
+            }            
         }
     }
 }
